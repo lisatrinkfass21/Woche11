@@ -45,6 +45,7 @@ public class calcDiffTest {
         list.add(2);
         list.add(1);
         list.add(22);
+        list.add(0);
         assertEquals(list, cd.compare());
 
     }
