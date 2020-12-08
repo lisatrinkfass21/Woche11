@@ -6,6 +6,7 @@
 package datetime;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -43,6 +44,7 @@ public class DateTime {
             cd.compare();
         }
 
+        datesbetween(date1, date2);
     }
 
     private static LocalDateTime split(String date) {
@@ -107,6 +109,15 @@ public class DateTime {
 
         return true;//wenn diff min. 1 Jahr ist datum1 vor datum 2 ist
 
+    }
+
+    private static void datesbetween(LocalDateTime date1, LocalDateTime date2) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy-hh:mm:ss");
+
+        while (date1.getYear() != date2.getYear() || date1.getMonthValue() != date2.getMonthValue() || date1.getDayOfMonth() != date2.getDayOfMonth()) {
+            date1 = date1.plusDays(1);
+            System.out.println(dtf.format(date1));
+        }
     }
 
 }
